@@ -1,0 +1,18 @@
+{
+  "name": "auto-developer",
+  "version": "1.0.0",
+  "description": "The most advanced autonomous developer for Gemini CLI. Features Level 5 Systemic Automation, Recursive Learning, and Adversarial Reasoning.",
+  "author": "User",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/your-username/auto-developer"
+  },
+  "scripts": {
+    "state": "python3 scripts/state_manager.py",
+    "compress": "python3 scripts/context_compressor.py",
+    "visual": "python3 scripts/visual_terminal.py"
+  },
+  "plan": {
+    "directory": ".gemini/plans"
+  }
+}
