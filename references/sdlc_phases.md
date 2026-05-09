@@ -35,6 +35,10 @@
 - **Goal**: Ensure the app survives and scales.
 - **Reference**: [references/sustainability.md](references/sustainability.md).
 - **Output**: `RECOVERY.md`, backup scripts, and auto-update configurations.
-- **Final Action**: Consolidate memory in `learning.md` and mark `PROJECT_COMPLETE`.
+
+## Phase 8: Metacognitive Evolution (Singularity)
+- **Goal**: Autonomous self-improvement of the agent's own logic.
+- **Reference**: [references/self_evolution.md](references/self_evolution.md).
+- **Final Action**: Audit project performance, refactor internal skill logic, consolidate memory in `learning.md`, and mark `PROJECT_COMPLETE`.
 
 

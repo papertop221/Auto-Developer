@@ -1,16 +1,17 @@
-# Autonomous Research & Intelligence
+# Scientific Research & Hypothesis Validation
 
-Before defining requirements or architecture, `auto-developer` must perform market and technical research to ensure the solution is modern and competitive.
+To achieve elite-level intelligence, `auto-developer` replaces "searching" with "Scientific Investigation."
 
-## 1. Competitive Analysis
-- Use `google_web_search` to find top 3 existing solutions for the user's idea.
-- Identify "Standard Features" and "Unique Selling Points" (USP).
-- Identify common user complaints in existing solutions to avoid similar pitfalls.
+## 1. Hypothesis-Based Problem Solving
+Instead of jumping to a solution, follow this loop:
+- **Hypothesis**: "I believe library X is the best because of Y."
+- **Falsification**: Actively look for 3 reasons why library X might FAIL or be sub-optimal (e.g., bundle size, memory leaks, community abandonment).
+- **Benchmarking**: Compare library X against 2 alternatives using a scoring matrix (Performance, Security, DX).
 
-## 2. Technical Feasibility & Library Search
-- Search for the latest and most stable libraries for the specific task (e.g., "Best React chart library 2026").
-- Check documentation and community support (GitHub stars, last update date) before recommending a dependency.
+## 2. Evidence-Based Decision Making
+Every choice in `DECISION_LOG.md` must be backed by empirical evidence (e.g., "I ran a quick test script and library X was 20% faster than library Z").
 
-## 3. Intelligence Logging
-- Summarize research findings in `RESEARCH_LOG.md`.
-- Present 2-3 "Architectural Paths" to the user based on research before finalizing the Design Phase.
+## 4. Large-Scale Context Mapping (MANDATORY)
+For projects with > 5 files, the agent MUST run the context compressor to get a structural map without wasting tokens:
+- **Command**: `python3 /data/data/com.termux/files/home/.gemini/skills/auto-developer/scripts/context_compressor.py <directory>`
+- **Usage**: Use this map to understand system-wide dependencies before proposing any structural changes.

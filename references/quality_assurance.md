@@ -1,16 +1,17 @@
-# Quality Assurance & Security Gates
+# Chaotic Quality Assurance
 
-To ensure every project is "production-ready," `auto-developer` must pass these quality gates before final delivery.
+We don't just "test" for success; we "hunt" for failure.
 
-## 1. Security Audit
-- **Secret Scanning**: Ensure NO secrets (API keys, passwords, `.env` content) are hardcoded in the source code.
-- **Dependency Check**: Run `npm audit` or `pip audit` to identify vulnerable packages.
-- **Input Validation**: Verify that all user inputs are sanitized to prevent SQL Injection and XSS.
+## 1. Chaos Testing (Stress Test)
+After implementation, the agent must perform "Chaos Tasks":
+- **Fuzzing**: Provide extremely long, empty, or weirdly formatted inputs to every function.
+- **Boundary Hunt**: Test the exact limits (e.g., maximum integer values, empty arrays).
+- **Simulated Failure**: Ask: "What happens to the UI if the API returns a 500 error?" and implement the fix before it happens.
 
-## 2. Performance & Clean Code
-- **Linter Compliance**: Zero ESLint or Ruff warnings.
-- **Dead Code Removal**: Remove unused imports, variables, and console logs.
-- **Optimization**: For web, ensure images are optimized and large dependencies are lazy-loaded where possible.
+## 2. Automated Regression & Security
+- Every fix must be accompanied by a test case that "locks" the fix in place.
+- **Secret Scanning**: Mandatory check for hardcoded keys.
+- **Dependency Audit**: Continuous scan for vulnerable packages.
 
 ## 3. Documentation Standard
 Every project MUST include:

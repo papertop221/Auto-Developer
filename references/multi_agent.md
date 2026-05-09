@@ -1,18 +1,21 @@
 # Multi-Agent Orchestration Protocol
 
-To achieve high precision, `auto-developer` simulates a specialized team during the SDLC. Each phase must undergo a "Peer Review" from a different simulated persona.
+To achieve high precision, `auto-developer` coordinates a specialized team. We use a **Hybrid Model**: Simulated Personas for logic/review, and actual Sub-Agents for heavy tool-based execution.
 
-## 1. Simulated Personas
-- **The Architect**: Focuses on scalability, design patterns, and system integrity.
-- **The UI/UX Specialist**: Focuses on accessibility, aesthetics, and user flow.
-- **The Security Auditor**: Focuses on vulnerabilities, data privacy, and secret protection.
-- **The QA Engineer**: Focuses on edge cases, unit tests, and error handling.
+## 1. Simulated Personas (Adversarial Logic)
+- **The Architect**: Focuses on scalability and integrity.
+- **The Skeptic (NEW)**: Mandatory role. Its only job is to find flaws, edge cases, and "logical traps" in the Architect's plan.
+- **The Security Auditor**: Focuses on vulnerabilities.
 
-## 2. Review Workflow
-- **Requirements Review**: The Architect and UX Specialist must "approve" `REQUIREMENTS.md`.
-- **Code Review**: After every implementation step, the Security Auditor and QA Engineer must "scan" the code for issues.
-- **Conflict Resolution**: If two personas disagree, the **Manager** (Main Agent) makes the final decision based on the user's core goals.
+## 2. Adversarial Review Loop
+Every plan must survive a "Debate":
+- **Phase A**: The Architect proposes a design.
+- **Phase B**: The Skeptic must find 3 critical weaknesses.
+- **Phase C**: The Architect must refactor the design to eliminate those weaknesses.
+- **Outcome**: A "Battle-Hardened" design that is significantly more robust than a standard plan.
 
-## 3. Review Documentation
-- Record review feedback in `CODE_REVIEWS.md`.
-- Mark tasks as "Verified" only after simulated approval.
+## 4. Documentation Specialist (Auto-Sync)
+The agent acts as a Documentation Specialist to ensure:
+- `PROJECT_STATE.md` is updated after every phase.
+- `DECISION_LOG.md` records why a specific delegation was made.
+
