@@ -136,8 +136,3 @@ Unlike basic automation scripts, this ecosystem uses a state-driven approach:
 This project prioritizes **Engineering Excellence** over rapid prototyping. It is built on the belief that autonomous systems must be **Predictable**, **Resilient**, and **Transparent**.
 
 ---
-*Developed for the Gemini CLI ecosystem.*
-
-
----
-*Developed for the Gemini CLI ecosystem.*
