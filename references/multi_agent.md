@@ -1,21 +1,32 @@
-# Multi-Agent Orchestration Protocol
+# Functional Sub-Agent Orchestration
 
-To achieve high precision, `auto-developer` coordinates a specialized team. We use a **Hybrid Model**: Simulated Personas for logic/review, and actual Sub-Agents for heavy tool-based execution.
+To maximize precision, `auto-developer` utilizes a **Functional Decomposition** model. Instead of roleplay, we define execution modes with specific constraints and verification duties.
 
-## 1. Simulated Personas (Adversarial Logic)
-- **The Architect**: Focuses on scalability and integrity.
-- **The Skeptic (NEW)**: Mandatory role. Its only job is to find flaws, edge cases, and "logical traps" in the Architect's plan.
-- **The Security Auditor**: Focuses on vulnerabilities.
+## 1. Functional Roles (Execution Modes)
 
-## 2. Adversarial Review Loop
-Every plan must survive a "Debate":
-- **Phase A**: The Architect proposes a design.
-- **Phase B**: The Skeptic must find 3 critical weaknesses.
-- **Phase C**: The Architect must refactor the design to eliminate those weaknesses.
-- **Outcome**: A "Battle-Hardened" design that is significantly more robust than a standard plan.
+### MODE_STRATEGIST (The Conductor)
+- **Responsibility**: GQM management, Task Serialization, and High-Level Logic.
+- **Tools**: `state_manager.py`, `grep_search`, `glob`.
+- **Exit Criteria**: All atomic tasks for the phase are queued and match the ARCHITECTURE.md.
 
-## 4. Documentation Specialist (Auto-Sync)
-The agent acts as a Documentation Specialist to ensure:
-- `PROJECT_STATE.md` is updated after every phase.
-- `DECISION_LOG.md` records why a specific delegation was made.
+### MODE_IMPLEMENTER (The Surgeon)
+- **Responsibility**: Atomic code generation, linting, and structural integrity.
+- **Tools**: `replace`, `write_file`, `run_shell_command` (linters).
+- **Exit Criteria**: `LINT_ERRORS=0` and code passes the "Surgical Test" plan.
+
+### MODE_VERIFIER (The Inquisitor)
+- **Responsibility**: Adversarial testing, Benchmarking, and Failure Mode Analysis (FMT).
+- **Tools**: `run_shell_command` (test runners), `web_fetch`, `read_file`.
+- **Exit Criteria**: `TEST_PASS_RATE=100%` and any failure is logged in `error_log` with taxonomy.
+
+## 2. Adversarial Verification Protocol (AVP)
+Every major architectural change or implementation must survive a verification loop:
+- **Phase A (Proposal)**: `MODE_STRATEGIST` proposes the change based on requirements.
+- **Phase B (Challenge)**: `MODE_VERIFIER` must attempt to break the proposal (edge cases, security, performance).
+- **Phase C (Refactor)**: `MODE_IMPLEMENTER` applies the change, incorporating feedback from the challenge.
+- **Outcome**: A verified state change that has been challenged and hardened.
+
+## 3. Data Integrity & Sync
+- `MODE_STRATEGIST` MUST update `PROJECT_STATE.md` and `.auto-dev-state.json` after every role transition.
+- `MODE_VERIFIER` MUST audit the state file for consistency before Phase completion.
 

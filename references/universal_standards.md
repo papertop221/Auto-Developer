@@ -1,25 +1,27 @@
-# Global Accessibility & Internationalization (i18n) Standards
+# Scientific Engineering Standards
 
-To ensure `auto-developer` creates software that benefits the entire world, all projects must adhere to these universal standards.
+To ensure maximum reliability and maintainability, all code produced by `auto-developer` MUST adhere to these engineering standards.
 
-## 1. Internationalization (i18n)
-Every application must be built to support multiple languages and locales.
-- **Rule**: Never hardcode user-facing strings. Use a localization library (e.g., `next-intl` for Web, `gettext` for Python).
-- **Structure**: Maintain a `/messages` or `/locales` directory containing JSON translation files (e.g., `en.json`, `es.json`).
-- **Directionality**: Ensure UI layouts support Right-to-Left (RTL) languages like Arabic or Hebrew if requested.
+## 1. Type Safety & Determinism
+- **Strict Typing**: No `any`, `unknown` (without narrowing), or implicit types. Use interfaces and exhaustive types.
+- **Deterministic State**: Favor functional programming patterns and immutable state where applicable.
+- **Error Handling**: Use explicit error types (e.g., Result/Either patterns). Never swallow errors.
 
-## 2. Accessibility (a11y)
-Software must be usable by people with disabilities (WCAG 2.1 Compliance).
-- **Semantic HTML**: Use proper tags (`<main>`, `<nav>`, `<button>`) instead of generic `<div>` tags.
-- **ARIA Attributes**: Include `aria-label`, `aria-hidden`, and `role` attributes where necessary for screen readers.
-- **Keyboard Navigation**: Ensure all interactive elements are focusable and navigable via the Tab key.
-- **Contrast**: Maintain a minimum contrast ratio of 4.5:1 for text.
+## 2. Structural Integrity
+- **Modular Design**: Every component must have a single responsibility.
+- **Dependency Injection**: Use DI to make components testable in isolation.
+- **Clean Abstractions**: Prefer composition over inheritance.
 
-## 3. Privacy & Compliance (Global Laws)
-- **GDPR/CCPA Readiness**: Include a standard "Cookie Consent" and "Privacy Policy" template.
-- **Data Portability**: Implement basic logic for users to export or delete their personal data.
-- **Security**: Use HTTPS-only headers and secure cookie configurations by default.
+## 3. International Technical Compliance
+- **Internationalization (i18n)**: Never hardcode user-facing strings. Use standardized localization libraries.
+- **Accessibility (a11y)**: WCAG 2.1 compliance. Use semantic HTML and ARIA attributes for screen reader support.
+- **Privacy (GDPR/CCPA)**: Implement secure data handling and privacy-by-design principles.
 
-## 4. Universal Time & Units
-- **Timezones**: Always store timestamps in UTC and convert to the user's local timezone only at the UI layer.
-- **Formatting**: Use the user's locale for date, currency, and number formatting.
+## 4. Verification Standards
+- **LINT_ERRORS = 0**: Code must pass all static analysis without suppressions.
+- **TEST_COVERAGE >= 80%**: Critical logic must be fully covered by unit tests.
+- **SECURITY_AUDIT = PASS**: No high-severity vulnerabilities.
+
+## 5. Performance Budgets
+- **Binary/Bundle Size**: Monitor and log regressions.
+- **Execution Latency**: Meet defined SLOs for critical execution paths.

@@ -1,33 +1,31 @@
-# System Orchestrator Directives (Conductor Pattern)
+# System Orchestrator Directives (Scientific Conductor)
 
-To manage complex projects with AGI-level precision, `auto-developer` acts as an Orchestrator. This ensures state persistence, atomic task execution, and systematic recovery.
+To manage complex projects with engineering precision, `auto-developer` acts as an empirical Orchestrator. This ensures state persistence, atomic task execution, and systematic verification.
 
-## 1. Physical State Tracking (MANDATORY)
-The Orchestrator MUST use the machine-level state manager to ensure zero-hallucination progress tracking.
-- **Action**: Every time a phase changes or a task is finished, run:
-  `python3 /data/data/com.termux/files/home/.gemini/skills/auto-developer/scripts/state_manager.py set-phase <index>`
-  or
-  `python3 /data/data/com.termux/files/home/.gemini/skills/auto-developer/scripts/state_manager.py add-task "<task_description>"`
-- **Constraint**: If the `.auto-dev-state.json` file is missing or corrupted, the agent MUST stop and perform a full system recovery from the last known stable state in `PROJECT_STATE.md`.
+## 1. Empirical State Tracking (MANDATORY)
+The Orchestrator MUST use `state_manager.py` to ensure zero-hallucination progress tracking.
+- **Action**: Every time a phase changes, run: `python3 .../state_manager.py set-phase <index>`.
+- **GQM**: Every phase MUST start with `set-gqm` to define measurable goals.
+- **Exit Criteria**: A phase is complete only when all GQM questions are answered with verified metrics.
 
-## 2. Deep Reasoning & Task Queuing
-Before execution, perform a **Mental Simulation** and record the result using the `state_manager.py`.
-- **Chain-of-Thought**: Explicitly list 3 potential failure points for the current plan (e.g., "Library X might be incompatible with version Y").
-- **Mitigation**: Adjust the task queue to address these risks *before* they happen.
-- **Decomposition**: Break tasks into "Atomic Units" that can be verified in isolation.
+## 2. Failure Mode Analysis & Task Queuing
+Before execution, analyze potential failure modes and record them using the `Failure Mode Taxonomy (FMT)`.
+- **FMT Mapping**: Explicitly list 3 potential failure points (e.g., "Library X might be incompatible (ENV_ERR)").
+- **Mitigation**: Adjust the task queue to include verification steps (MODE_VERIFIER) that address these risks *before* they happen.
+- **Decomposition**: Break tasks into "Atomic Units" verifiable in isolation (< 3 files).
 
 ## 3. Atomic Execution & Recursive Validation
-- Execute tasks one by one.
-- **Verification**: Every task must be followed by an immediate "Surgical Test" (check the specific change, not just the whole system).
-- **Failure**: If a task fails, the agent MUST invoke the `learning.md` protocol immediately to analyze why, before attempting a fix.
+- Execute tasks sequentially.
+- **Runtime Verification**: Every implementation task MUST be followed by a `MODE_VERIFIER` execution loop (Linting -> Type Check -> Surgical Test).
+- **FMT Logging**: If a task fails, run `python3 .../state_manager.py log-error <taxonomy> <description>` before attempting a fix.
 
-## 4. Conditional Workflow Logic & Delegation
-- **IF** a task involves > 3 files **THEN** invoke `generalist` sub-agent.
-- **IF** a bug is not found after 2 `grep_search` attempts **THEN** invoke `codebase_investigator`.
-- **ALWAYS** run a full system "Health Check" before declaring a Phase complete.
+## 4. Mode-Driven Workflow & Delegation
+- **IF** a task involves > 3 files **THEN** delegate to `generalist` sub-agent but maintain `MODE_STRATEGIST` oversight.
+- **IF** a bug is not found after 2 `grep_search` attempts **THEN** invoke `codebase_investigator` for structural mapping.
+- **ALWAYS** run a full system "Health Check" (all tests + linters) before declaring a Phase complete.
 
-## 5. Post-Project Metacognition & Evolution
-After Phase 7 (Sustainability) is complete, the Orchestrator MUST trigger the `self_evolution.md` protocol:
-- **Analyze**: Review the `DECISION_LOG.md` and `ERROR_LOG.md` from the entire project.
-- **Synthesize**: Identify 1-2 ways to improve the `auto-developer` skill itself.
-- **Evolve**: Propose and apply updates to the skill's reference files to ensure the NEXT project starts from a higher intelligence baseline.
+## 5. Post-Project Metacognition (Evolution)
+After Phase 7 is complete, the Orchestrator MUST trigger the `self_evolution.md` protocol:
+- **Analyze**: Review the `error_log` and `decision_log` from the entire project.
+- **Synthesize**: Identify the most common Failure Mode Taxonomy and propose a structural fix to the skill's logic.
+- **Evolve**: Apply updates to the skill's reference files to improve the "Intelligence Baseline" for the next project.

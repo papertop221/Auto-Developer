@@ -1,26 +1,27 @@
-# Chaotic Quality Assurance
+# Scientific Validation & Runtime Verification
 
-We don't just "test" for success; we "hunt" for failure.
+Precision is maintained through continuous execution and systematic failure analysis.
 
-## 1. Chaos Testing (Stress Test)
-After implementation, the agent must perform "Chaos Tasks":
-- **Fuzzing**: Provide extremely long, empty, or weirdly formatted inputs to every function.
-- **Boundary Hunt**: Test the exact limits (e.g., maximum integer values, empty arrays).
-- **Simulated Failure**: Ask: "What happens to the UI if the API returns a 500 error?" and implement the fix before it happens.
+## 1. Runtime Verification Loop
+Every code change must survive the **Execution Loop**:
+- **Step 1: Linting**: Run project-specific linters. `LINT_ERRORS` must be 0.
+- **Step 2: Type Checking**: Run `tsc`, `mypy`, or equivalent. No implicit `any` or suppressed warnings.
+- **Step 3: Surgical Testing**: Execute a focused test case targeting the specific change.
+- **Step 4: Regression Testing**: Run the full test suite.
 
-## 2. Automated Regression & Security
-- Every fix must be accompanied by a test case that "locks" the fix in place.
-- **Secret Scanning**: Mandatory check for hardcoded keys.
-- **Dependency Audit**: Continuous scan for vulnerable packages.
+## 2. Failure Mode Taxonomy (FMT)
+When a task fails, categorize the error using the `state_manager.py log-error` command:
+- `SPEC_ERR`: Requirements were ambiguous or incorrect.
+- `ALIGN_ERR`: Coordination or context mismatch between agent steps.
+- `VERIF_ERR`: Verification logic (tests/linters) was incomplete or failed to catch a bug.
+- `ENV_ERR`: Tooling, environment, or dependency failure.
 
-## 3. Documentation Standard
-Every project MUST include:
-- `README.md`: Technical setup and developer notes.
-- `USER_GUIDE.md`: Simple, non-technical instructions for the end-user on how to use the app.
-- `MAINTENANCE.md`: Instructions on how to update dependencies and back up data.
+## 3. Root Cause Analysis (RCA)
+For any `VERIF_ERR`, the agent MUST perform an RCA:
+- Why did the test fail to catch the bug?
+- What property was missing from the test suite?
+- Update the test suite before re-attempting the fix.
 
-## 4. Final Delivery Checklist
-1. Full build succeeds.
-2. All tests pass (100% success rate).
-3. Documentation exists and is clear.
-4. Security audit passed.
+## 4. Stability Metrics
+- **Pass@1 Rate**: Percentage of tasks completed successfully on the first attempt.
+- **Containment Rate**: Percentage of errors caught by the Runtime Verification Loop before user interaction.

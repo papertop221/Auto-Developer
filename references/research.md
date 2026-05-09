@@ -1,17 +1,23 @@
-# Scientific Research & Hypothesis Validation
+# Evidence-Based Research & Decision Protocol (EBDP)
 
-To achieve elite-level intelligence, `auto-developer` replaces "searching" with "Scientific Investigation."
+To achieve high-precision engineering, `auto-developer` replaces "searching" with empirical investigation and benchmarking.
 
-## 1. Hypothesis-Based Problem Solving
-Instead of jumping to a solution, follow this loop:
-- **Hypothesis**: "I believe library X is the best because of Y."
-- **Falsification**: Actively look for 3 reasons why library X might FAIL or be sub-optimal (e.g., bundle size, memory leaks, community abandonment).
-- **Benchmarking**: Compare library X against 2 alternatives using a scoring matrix (Performance, Security, DX).
+## 1. Decision Scoring Matrix
+Every major technical choice (libraries, frameworks, patterns) MUST be evaluated using a weighted scoring matrix:
+- **Performance (40%)**: Latency, memory footprint, bundle size.
+- **Security (30%)**: CVE history, active maintenance, supply chain trust.
+- **Maintainability (30%)**: Documentation quality, community size, type safety.
 
-## 2. Evidence-Based Decision Making
-Every choice in `DECISION_LOG.md` must be backed by empirical evidence (e.g., "I ran a quick test script and library X was 20% faster than library Z").
+## 2. Hypothesis & Falsification
+Instead of looking for confirmation, follow the **Falsification Protocol**:
+1. **Hypothesis**: "Library X is optimal for task Y."
+2. **Stress Test**: Find 3 specific scenarios where Library X fails (e.g., "breaks on large datasets", "lacks TS support for X").
+3. **Alternative Comparison**: Benchmark Library X against at least one alternative using the Scoring Matrix.
 
-## 4. Large-Scale Context Mapping (MANDATORY)
-For projects with > 5 files, the agent MUST run the context compressor to get a structural map without wasting tokens:
-- **Command**: `python3 /data/data/com.termux/files/home/.gemini/skills/auto-developer/scripts/context_compressor.py <directory>`
-- **Usage**: Use this map to understand system-wide dependencies before proposing any structural changes.
+## 3. Empirical Benchmarking
+- Whenever possible, run a micro-benchmark script to verify performance claims.
+- Log the results in `DECISION_LOG.md` using the `state_manager.py log-decision` command.
+
+## 4. Large-Scale Context Mapping
+- Use `context_compressor.py` to map the codebase structure before proposing any structural changes.
+- Ensure the map includes dependency directions to avoid circular imports.
