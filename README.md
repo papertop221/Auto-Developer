@@ -1,9 +1,9 @@
-# Auto-Developer: Elite Gemini Extension
+# Auto-Developer: Autonomous Gemini Extension
 
 [![Platform](https://img.shields.io/badge/Platform-Gemini--CLI-blue?style=for-the-badge&logo=google-gemini)](https://github.com/google/gemini-cli)
 [![Type](https://img.shields.io/badge/Type-Gemini--Skill-9cf?style=for-the-badge)](SKILL.md)
 [![License](https://img.shields.io/badge/License-MIT-green?style=for-the-badge)](LICENSE)
-[![Engine](https://img.shields.io/badge/SDLC-Elite_7--Phase-orange?style=for-the-badge)](references/sdlc_phases.md)
+[![Engine](https://img.shields.io/badge/SDLC-Autonomous_7--Phase-orange?style=for-the-badge)](references/sdlc_phases.md)
 
 A high-fidelity **Gemini Extension (Skill)** designed for the Gemini CLI ecosystem. This extension transforms the CLI into an autonomous, multi-agent software development house, implementing a professional 7-phase SDLC.
 
@@ -45,8 +45,8 @@ graph TD
 
 ---
 
-## 🔄 The Elite 7-Phase SDLC
-*Click on each phase to explore the technical specifications.*
+## 🔄 The Autonomous 7-Phase SDLC
+*A systematic approach to building resilient and scalable software.*
 
 <details>
 <summary><b>Phase 1: Research & Intelligence</b></summary>
@@ -124,6 +124,8 @@ Unlike basic automation scripts, this ecosystem uses a state-driven approach:
 
 ```text
 ├── SKILL.md                # Core logic and workflow definitions
+├── LICENSE                 # MIT License
+├── CONTRIBUTING.md         # Contribution guidelines
 ├── references/             # Technical specifications for each SDLC phase
 ├── scripts/                # Supporting automation and utility scripts
 └── assets/                 # System resources and architectural diagrams
@@ -133,6 +135,7 @@ Unlike basic automation scripts, this ecosystem uses a state-driven approach:
 
 ## 💡 Philosophy
 
-This project prioritizes **Engineering Excellence** over rapid prototyping. It is built on the belief that autonomous systems must be **Predictable**, **Resilient**, and **Transparent**.
+We believe that autonomous development should be **accessible**, **transparent**, and **resilient**. Instead of chasing speed at any cost, this project prioritizes **Engineering Integrity**, ensuring that every line of code is backed by research and rigorous validation.
 
 ---
+*Developed for the Gemini CLI ecosystem.*
