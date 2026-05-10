@@ -3,15 +3,14 @@ import os
 import sys
 from datetime import datetime
 
-# Global State Path
 STATE_FILE = ".auto-dev-state.json"
 
 PHASES = [
-    "Welcome & Blueprint",
-    "Technical Groundwork",
-    "Surgical Coding",
-    "Stress Test & Polish",
-    "Grand Reveal"
+    "CONTEXT_ACQUISITION",
+    "RISK_ASSESSMENT",
+    "SURGICAL_IMPLEMENTATION",
+    "INTEGRATION_TESTING",
+    "DELIVERY_POSTMORTEM"
 ]
 
 def load_state():
@@ -21,35 +20,44 @@ def load_state():
                 return json.load(f)
         except:
             pass
-    return {"phase": 0, "project": "New Project", "tasks": []}
+    return {
+        "phase_idx": 0,
+        "project_id": "DEFAULT",
+        "verification_log": [],
+        "timestamp": datetime.now().isoformat()
+    }
 
-def save_state(state):
+def update_state(phase_idx=None, project_id=None):
+    state = load_state()
+    if phase_idx is not None:
+        state["phase_idx"] = int(phase_idx)
+        msg = f"Transitioning to {PHASES[state['phase_idx']]}"
+        os.system(f"python3 scripts/visual_terminal.py phase '{msg}'")
+    if project_id:
+        state["project_id"] = project_id
+    
+    state["timestamp"] = datetime.now().isoformat()
     with open(STATE_FILE, "w") as f:
         json.dump(state, f, indent=2)
 
-def set_phase(index, name=None):
+def log_verification(result, status="PASS"):
     state = load_state()
-    state["phase"] = int(index)
-    if name: state["project"] = name
-    save_state(state)
+    state["verification_log"].append({
+        "timestamp": datetime.now().isoformat(),
+        "result": result,
+        "status": status
+    })
+    with open(STATE_FILE, "w") as f:
+        json.dump(state, f, indent=2)
     
-    # Trigger visual feedback
-    phase_name = PHASES[int(index)]
-    os.system(f"python3 scripts/visual_terminal.py phase 'Phase {index+1}: {phase_name}'")
-
-def add_log(msg, type="info"):
-    # Log to a history file for the user
-    with open("PROJECT_LOG.txt", "a") as f:
-        f.write(f"[{datetime.now().strftime('%H:%M:%S')}] {msg}\n")
-    
-    # Visual feedback
-    os.system(f"python3 scripts/visual_terminal.py {type} '{msg}'")
+    color_mode = "success" if status == "PASS" else "error"
+    os.system(f"python3 scripts/visual_terminal.py {color_mode} '{result}'")
 
 if __name__ == "__main__":
     if len(sys.argv) < 2: sys.exit(1)
     
     cmd = sys.argv[1]
     if cmd == "set-phase":
-        set_phase(sys.argv[2], sys.argv[3] if len(sys.argv) > 3 else None)
-    elif cmd == "log":
-        add_log(sys.argv[3], sys.argv[2])
+        update_state(phase_idx=sys.argv[2])
+    elif cmd == "verify":
+        log_verification(sys.argv[3], sys.argv[2])

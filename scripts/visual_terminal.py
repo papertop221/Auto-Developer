@@ -1,51 +1,47 @@
 import os
 import sys
-import subprocess
 
-# Professional Terminal Styling
-BLUE = "\033[94m"
-CYAN = "\033[96m"
-GREEN = "\033[92m"
-YELLOW = "\033[93m"
-RED = "\033[91m"
+# Professional Minimalist Palette
+DIM = "\033[2m"
+BLUE = "\033[34m"
+CYAN = "\033[36m"
+GREEN = "\033[32m"
+YELLOW = "\033[33m"
+RED = "\033[31m"
 BOLD = "\033[1m"
 RESET = "\033[0m"
 
-def render_box(title, text, color=CYAN):
-    width = 60
-    header = f" {BOLD}{title}{RESET} "
-    padding = (width - len(title) - 4) // 2
+def render_pro_box(header, body, color=CYAN):
+    width = 64
+    # Clean header with block character
+    print(f"\n{color}█ {BOLD}{header.upper()}{RESET}")
     
-    print(f"\n{color}╭" + "─" * padding + header + "─" * (width - padding - len(title) - 4) + "╮" + RESET)
-    
-    for line in text.split('\n'):
-        # Simple word wrap
+    # Minimalist borderless content
+    for line in body.split('\n'):
         while len(line) > (width - 4):
-            space_idx = line[:width-4].rfind(' ')
-            idx = space_idx if space_idx > 0 else width-4
-            print(f"{color}│{RESET} {line[:idx].ljust(width-4)} {color}│{RESET}")
+            idx = line[:width-4].rfind(' ')
+            if idx <= 0: idx = width-4
+            print(f"{DIM}│{RESET} {line[:idx]}")
             line = line[idx:].strip()
-        print(f"{color}│{RESET} {line.ljust(width-4)} {color}│{RESET}")
-        
-    print(f"{color}╰" + "─" * (width - 2) + "╯" + RESET)
+        print(f"{DIM}│{RESET} {line}")
+    print()
 
 def main():
     if len(sys.argv) < 3:
-        # Default help
-        render_box("AUTO-DEVELOPER", "Ready to build something amazing?")
+        render_pro_box("auto-developer", "Professional Engineering Suite Active.", BLUE)
         sys.exit(0)
 
     mode = sys.argv[1]
-    content = sys.argv[2]
+    msg = sys.argv[2]
 
     if mode == "phase":
-        render_box("PHASE UPDATE", content, YELLOW)
+        render_pro_box("phase status", msg, YELLOW)
     elif mode == "success":
-        render_box("COMPLETED", content, GREEN)
+        render_pro_box("verification pass", msg, GREEN)
     elif mode == "info":
-        render_box("SYSTEM NOTE", content, BLUE)
+        render_pro_box("technical note", msg, BLUE)
     elif mode == "error":
-        render_box("ATTENTION", content, RED)
+        render_pro_box("critical failure", msg, RED)
 
 if __name__ == "__main__":
     main()
