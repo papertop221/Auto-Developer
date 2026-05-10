@@ -6,24 +6,22 @@ from datetime import datetime
 STATE_FILE = ".auto-dev-state.json"
 
 VALID_PHASES = [
-    "0: Recall",
-    "1: Research",
-    "2: Requirements",
-    "3: Design",
-    "4: Implementation",
-    "5: Validation",
-    "6: Infrastructure",
-    "7: Sustainability",
-    "8: Evolution"
+    "1: Discovery & Context Mapping",
+    "2: Empirical Research & Feasibility",
+    "3: Formal Architecture & Design",
+    "4: Surgical Implementation",
+    "5: Exhaustive Validation & Quality Assurance",
+    "6: Documentation & Delivery",
+    "7: Post-Mortem & Knowledge Consolidation"
 ]
 
-TAXONOMY_TYPES = ["SPEC_ERR", "ALIGN_ERR", "VERIF_ERR", "ENV_ERR"]
+TAXONOMY_TYPES = ["ENV_ERR", "LOGIC_ERR", "SPEC_ERR", "OTHER"]
 
 def load_state():
     default_state = {
         "current_phase": 0,
         "completed_tasks": [],
-        "gqm": {"goal": "", "questions": [], "metrics": {}},
+        "requirements": [],
         "error_log": [],
         "decision_log": [],
         "history": []
