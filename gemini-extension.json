@@ -1,7 +1,7 @@
 {
-  "name": "auto-developer",
-  "version": "2.0.0",
-  "description": "A high-precision autonomous software engineer for Gemini CLI. Focuses on grounded engineering principles, empirical research, and verification-driven development.",
+  "name": "Forge",
+  "version": "4.1.0",
+  "description": "A high-precision engineering suite for autonomous software construction. Optimized for professional workflows and technical excellence.",
   "author": "User",
   "repository": {
     "type": "git",

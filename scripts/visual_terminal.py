@@ -28,7 +28,7 @@ def render_pro_box(header, body, color=CYAN):
 
 def main():
     if len(sys.argv) < 3:
-        render_pro_box("auto-developer", "Professional Engineering Suite Active.", BLUE)
+        render_pro_box("Forge", "Professional Engineering Suite Active.", BLUE)
         sys.exit(0)
 
     mode = sys.argv[1]
